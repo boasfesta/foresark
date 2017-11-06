@@ -9,3 +9,8 @@ C:\Users\Lucas\documents\visual studio 2010\Projects\Foresark\Foresark\bin\Debug
 C:\Users\Lucas\Documents\Visual Studio 2010\Projects\Foresark\Foresark\obj\x86\Debug\Foresark.csprojResolveAssemblyReference.cache
 C:\Users\Lucas\Source\Repos\foresarkProject\Foresark\obj\x86\Debug\Foresark.exe
 C:\Users\Lucas\Source\Repos\foresarkProject\Foresark\obj\x86\Debug\Foresark.pdb
+C:\Users\Lucas\Source\Repos\foresark\Foresark\obj\x86\Debug\Foresark.exe
+C:\Users\Lucas\Source\Repos\foresark\Foresark\obj\x86\Debug\Foresark.pdb
+C:\Users\Lucas\Source\Repos\foresark\Foresark\bin\Debug\Foresark.exe
+C:\Users\Lucas\Source\Repos\foresark\Foresark\bin\Debug\Foresark.pdb
+C:\Users\Lucas\Source\Repos\foresark\Foresark\obj\x86\Debug\Foresark.csprojResolveAssemblyReference.cache

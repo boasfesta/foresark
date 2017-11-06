@@ -71,6 +71,9 @@ namespace Foresark
                     case "openconnection":
                         OpenConnection openconnection = new OpenConnection(commandParameters);
                         break;
+                    case "packetflood":
+                        PacketFlood packetflood = new PacketFlood(commandParameters);
+                        break;
                     default:
                         Output.printMsg("[red]" + action + " is not a valid command![/red]");
                         break;
