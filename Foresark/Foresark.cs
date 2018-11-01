@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using Foresark.Commands;
 
@@ -11,6 +12,29 @@ namespace Foresark
         public static System.Net.Sockets.TcpClient socket = new System.Net.Sockets.TcpClient();
         public static string targetIP;
         public static int targetPort;
+
+        public static bool IsConnected
+        {
+            get
+            {
+                try
+                {
+                    if (socket != null && socket.Client != null)
+                    {
+                        
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
         public Foresark()
         {
@@ -98,7 +122,5 @@ namespace Foresark
                 readCommand();
             }
         }
-
-
     }
 }

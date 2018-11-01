@@ -103,40 +103,26 @@ namespace Foresark.Commands
 
             while (output.IndexOf("[") > 0)
             {
-                var startIndex = 0;
-                var endIndex = output.IndexOf("[");
-                var processName = output.Substring(endIndex + 1, output.IndexOf("]") - endIndex - 1);
-                var limitProcessAddresses = output.Substring(endIndex + 1).IndexOf("[");
-                string processAddresses = string.Empty;
-                if (limitProcessAddresses > 0)
+                var processStart = output.IndexOf('[');
+                var processEnd = output.IndexOf(']');
+                var processName = output.Substring(processStart + 1, processEnd - processStart - 1).ToLower();
+                var processAddress = output.Substring(0, processStart);
+
+                var process = result.FirstOrDefault(p => p.Key == processName);
+                if (process.Value != null)
                 {
-                    processAddresses = output.Substring(endIndex + 1, limitProcessAddresses - 1);
-                    output = output.Substring(endIndex + 1);
+                    string addresses = string.Empty;
+                    result.TryGetValue(processName, out addresses);
+                    result.Remove(processName);
+                    result.Add(processName, addresses + "\n" + processAddress);
                 }
                 else
                 {
-                    processAddresses = output.Substring(endIndex + 1);
-                    output = string.Empty;
+                    result.Add(processName, processAddress);
                 }
 
-                if (!result.Keys.Any(p => p == processName.ToLower()))
-                {
-                    result.Add(processName.ToLower(), processAddresses);
-                }
-                else
-                {
-                    string value = string.Empty;
-                    if (result.TryGetValue(processName.ToLower(), out value))
-                    {
-                        value = value + processAddresses;
-                        result.Remove(processName.ToLower());
-                        result.Add(processName.ToLower(), value);
-                    }
-                }
+                output = output.Substring(processEnd + 1);
             }
-
-            //Remove the version info
-            result.Remove(result.Keys.First());
 
             return result;
         }

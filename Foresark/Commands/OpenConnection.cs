@@ -21,6 +21,12 @@ namespace Foresark.Commands
 
         public override object action()
         {
+            if (Foresark.socket.Connected)
+            {
+                Foresark.socket.Client.Close();
+                Foresark.socket = new TcpClient();
+            }
+
             string ip = string.Empty;
             int port = 0;
             string process = GetParameter("process");
@@ -49,12 +55,11 @@ namespace Foresark.Commands
                 try
                 {
                     Output.printMsg("Trying to open connection to: " + ip + ":" + port);
-                    if (Foresark.socket.Connected) Foresark.socket.Client.Close();
                     Foresark.socket.Connect(ip, port);
                 }
                 catch (SocketException e)
                 {
-                    Output.printMsg("[red]Connection unsuccessful[/red]");
+                    Output.printMsg("[red]Connection unsuccessful: " + e.Message + "[/red]");
                 }
                 if (Foresark.socket.Connected)
                 {
