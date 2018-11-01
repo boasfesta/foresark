@@ -44,8 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\About.cs" />
+    <Compile Include="Commands\CloseConnection.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\Exit.cs" />
+    <Compile Include="Commands\FlashFactory.cs" />
+    <Compile Include="Commands\GetAddress.cs" />
     <Compile Include="Commands\Help.cs" />
     <Compile Include="Commands\OpenConnection.cs" />
     <Compile Include="Foresark.cs" />

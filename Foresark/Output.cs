@@ -61,7 +61,7 @@ namespace Foresark
             printLine("FORESARK", ConsoleColor.Red, ConsoleColor.Black, true);
             if (Foresark.socket.Connected)
             {
-                printLine("Connected to " + Foresark.socket.Client.LocalEndPoint, ConsoleColor.Green, ConsoleColor.Black, true);
+                printLine("Connected to " + Foresark.socket.Client.RemoteEndPoint, ConsoleColor.Green, ConsoleColor.Black, true);
             }
             printFullLine(ConsoleColor.DarkRed);
         }

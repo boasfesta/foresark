@@ -9,6 +9,8 @@ namespace Foresark
     class Foresark
     {
         public static System.Net.Sockets.TcpClient socket = new System.Net.Sockets.TcpClient();
+        public static string targetIP;
+        public static int targetPort;
 
         public Foresark()
         {
@@ -70,6 +72,15 @@ namespace Foresark
                         return;
                     case "openconnection":
                         OpenConnection openconnection = new OpenConnection(commandParameters);
+                        break;
+                    case "closeconnection":
+                        CloseConnection closeconnection = new CloseConnection(commandParameters);
+                        break;
+                    case "flashfactory":
+                        FlashFactory flashfactory = new FlashFactory(commandParameters);
+                        break;
+                    case "getaddress":
+                        GetAddress getaddress = new GetAddress(commandParameters);
                         break;
                     default:
                         Output.printMsg("[red]" + action + " is not a valid command![/red]");
