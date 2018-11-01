@@ -1,5 +1,0 @@
-C:\Users\Lucas\Source\Repos\foresarkProject\Foresark\bin\Release\Foresark.exe
-C:\Users\Lucas\Source\Repos\foresarkProject\Foresark\bin\Release\Foresark.pdb
-C:\Users\Lucas\Source\Repos\foresarkProject\Foresark\obj\x86\Release\Foresark.csproj.CoreCompileInputs.cache
-C:\Users\Lucas\Source\Repos\foresarkProject\Foresark\obj\x86\Release\Foresark.exe
-C:\Users\Lucas\Source\Repos\foresarkProject\Foresark\obj\x86\Release\Foresark.pdb
