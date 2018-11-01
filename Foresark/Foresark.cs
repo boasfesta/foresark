@@ -82,6 +82,9 @@ namespace Foresark
                     case "getaddress":
                         GetAddress getaddress = new GetAddress(commandParameters);
                         break;
+                    case "packetflood":
+                        PacketFlood packetflood = new PacketFlood(commandParameters);
+                        break;
                     default:
                         Output.printMsg("[red]" + action + " is not a valid command![/red]");
                         break;

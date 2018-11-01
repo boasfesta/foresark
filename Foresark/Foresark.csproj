@@ -51,6 +51,7 @@
     <Compile Include="Commands\GetAddress.cs" />
     <Compile Include="Commands\Help.cs" />
     <Compile Include="Commands\OpenConnection.cs" />
+    <Compile Include="Commands\PacketFlood.cs" />
     <Compile Include="Foresark.cs" />
     <Compile Include="Output.cs" />
     <Compile Include="Program.cs" />
