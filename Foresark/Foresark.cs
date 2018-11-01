@@ -13,29 +13,6 @@ namespace Foresark
         public static string targetIP;
         public static int targetPort;
 
-        public static bool IsConnected
-        {
-            get
-            {
-                try
-                {
-                    if (socket != null && socket.Client != null)
-                    {
-                        
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-
         public Foresark()
         {
             Output.clear();
